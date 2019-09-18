@@ -1,0 +1,68 @@
+{% extends 'teacher/base.html' %}
+{% block userbody %}
+<style>
+.tlholder{
+padding:10px;
+width:59%;
+float:left;
+position:fixed;
+top:10%;
+left:25%;
+overflow:auto;
+background:rgba(255,255,255,0.5);
+}
+table.tetable{
+border-collapse:collapse;
+border:1px solid green;
+}
+table.tetable th{
+width:150px;
+height:50px;
+background:green;
+}
+table.tetable td{
+text-align:center;
+}
+table.tetable tr td:first-child{
+border-left:1px solid green;
+}
+table.tetable tr td:last-child{
+border-right:1px solid green;
+}
+tr:hover{
+background:green;
+color:white;
+}
+tr:first-child:hover{
+background:green;
+color:black;
+}
+tr:hover td{
+border-right:1px solid white;
+}
+
+</style>
+
+<div class="tlholder">
+<table class="tetable">
+<tr>
+<th>Teacher</th>
+<th>Student Name</th>
+<th>Student Id</th>
+<th>Class</th>
+<th>Mobile Number</th>
+<th>Location</th>
+</tr>
+{% for da in data %}
+<tr>
+<td>{{da.user}}</td>
+<td>{{da.name}}</td>
+<td>{{da.studentid}}</td>
+<td>{{da.classes}}</td>
+<td>{{da.mobile}}</td>
+<td>{{da.location}}</td>
+{% endfor %}
+</tr>
+</table>
+</div>
+{% endblock %}

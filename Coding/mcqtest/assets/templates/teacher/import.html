@@ -1,0 +1,42 @@
+{% extends 'teacher/base.html' %}
+{% block userbody %}
+{% load staticfiles %}
+<style>
+.dets{
+position:absolute;
+top:10%;
+left:20%;
+border-radius:10px;
+background:rgba(255,255,255,0.5);
+padding:100px;
+}
+button[type=submit]{
+background:none;
+border:1px solid white;
+width:100px;
+height:50px;
+text-transform:uppercase;
+margin-top:10px;
+color:white;
+}
+button:hover{
+background:white;
+color:black;
+}
+</style>
+<div class="dets">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>Teacher Name   <b>:</b>   {{user}}</p>
+    <br/>
+    <br/>
+    <input type="file" name="myfile">
+    <br/>
+    <br/>
+    <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">Upload</button>
+  </form>
+  </div>
+  <img src="{% static 'images/uploads.gif' %}" style="position:absolute;top:60%;left:60%;background:white;border-radius:500px;">
+  <img src="{% static 'images/user_add.png' %}" style="position:absolute;top:10%;left:70%;">
+{% endblock %}

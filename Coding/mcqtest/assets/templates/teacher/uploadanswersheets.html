@@ -1,0 +1,87 @@
+{% extends 'teacher/base.html' %}
+{% block userbody %}
+{% load staticfiles %}
+<style>
+.divform{
+    position:fixed;
+    top: 30%;
+    left: 40%;
+    margin-top: -9em;
+    border: 1px double #ccc;
+    border-radius:10px;
+    background-color: #f3f3f3;
+    float:left;
+    background:rgba(75,75,75,0.7);
+    padding:50px;
+}
+table tr{
+height:80px;
+}
+input[type=submit],input[type=text],input[type=password],input[type=date]{
+background:none;
+border:1px solid white;
+padding:5px;
+color:white;
+width:80%;
+}
+select{
+background:none;
+border:1px solid white;
+padding:5px;
+width:80%;
+}
+input[type=submit]{
+width:100px;
+height:35px;
+text-transform:uppercase;
+color:white;
+}
+input[type=submit]:hover{
+background:white;
+color:rgb(75,75,75);
+}
+.datepicker{
+background:red;
+}
+</style>
+
+<div class="divform">
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<table>
+<tr>
+<td><p style="color:white;">Student Name</p></td>
+<td><p style="color:white;padding-left:10px;padding-right:10px;">:</p></td>
+<td>{{form.students}}</td>
+</tr>
+<tr>
+<td><p style="color:white;">Subject</p></td>
+<td><p style="color:white;padding-left:10px;padding-right:10px;">:</p></td>
+<td>{{form.subject}}</td>
+</tr>
+<tr>
+<td><p style="color:white;">Class</p></td>
+<td><p style="color:white;padding-left:10px;padding-right:10px;">:</p></td>
+<td>{{form.classes}}</td>
+</tr>
+<tr>
+<td><p style="color:white;">Exam</p></td>
+<td><p style="color:white;padding-left:10px;padding-right:10px;">:</p></td>
+<td>{{form.exam}}</td>
+</tr>
+<tr>
+<td><p style="color:white;">Date Conducted</p></td>
+<td><p style="color:white;padding-left:10px;padding-right:10px;">:</p></td>
+<td>{{form.dateconducted}}</td>
+</tr>
+<tr>
+<td><p style="color:white;">Answer Papers</p></td>
+<td><p style="color:white;padding-left:10px;padding-right:10px;">:</p></td>
+<td>{{form.answerpapers}}</td>
+</tr>
+<tr>
+<td colspan="3" style="text-align:center;"><input type="submit" name="submit" value="submit"></td>
+</tr>
+</form>
+</div>
+{% endblock %}

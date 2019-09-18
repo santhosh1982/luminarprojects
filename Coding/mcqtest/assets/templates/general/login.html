@@ -1,0 +1,224 @@
+{% extends 'general\base.html' %}
+{% block loginbody %}
+{% load staticfiles %}
+<style>
+.userna{
+    border:1px solid white;
+    background:none;
+    border-radius:5px;
+    text-align:center;
+}
+.userna:hover{
+}
+.passwo{
+border:1px solid white;
+background:none;
+border-radius:5px;
+text-align:center;
+}
+input[type="text"].userna::-webkit-input-placeholder,input[type="password"].passwo::-webkit-input-placeholder {
+  color: white;
+  opacity:1;
+}
+table tr {
+height:50px;
+
+}
+input[type=submit].subbtn{
+width:50%;
+background:none;
+border:1px solid white;
+text-transform:uppercase;
+color:white;
+cursor:pointer;
+padding:2px;
+}
+input[type=submit].subbtn:hover{
+background:white;
+color:rgb(94, 142, 137);
+font-weight: bold;
+}
+table.logintable tr td a{
+text-decoration:none;
+color:white;
+text-transform:uppercase;
+padding:5px;
+border:1px solid white;
+font-weight: bold;
+}
+table.logintable tr td a:hover{
+background:white;
+color:rgb(94, 142, 137);
+}
+table.logintable1 tr td a{
+text-decoration:none;
+color:white;
+text-transform:uppercase;
+padding:5px;
+border:1px solid white;
+font-weight: bold;
+}
+table.logintable1 tr td a:hover{
+background:white;
+color:rgb(94, 0, 137);
+}
+div.users{
+position:absolute;
+bottom:1%;
+left:45%;
+height:3%;
+background:red;
+}
+a.user, a.admin{
+text-transform:uppercase;
+text-decoration:none;
+background:green;
+}
+div.users{
+border-bottom:1px solid green;
+border-right:1px solid green;
+border-left:1px solid green;
+}
+a.user{
+border-top:2px solid white;
+}
+a.admin{
+border-top:1px solid green;
+}
+.mySlides {display:none;}
+a.userme{
+text-decoration:none;
+color:white;
+}
+a.adminme{
+text-decoration:none;
+color:white;
+}
+@font-face {
+    font-family: titlefont;
+    src: url({% static 'fonts/AppleTree.ttf' %});
+}
+@font-face {
+    font-family: btmfont;
+    src: url({% static 'fonts/Lobster.otf' %});
+}
+@font-face {
+    font-family: headingfont;
+    src: url({% static 'fonts/Chancery.ttf' %});
+}
+.titletag{
+text-transform:uppercase;
+font-size:32px;
+color:white;
+position:absolute;
+left:7%;
+top:5%;
+padding:20px;
+font-family:headingfont;
+background:rgba(96, 96, 160,0.5);
+border-size:1px;
+border-style:solid;
+border-color:white;
+border-radius:7px 7px 7px 7px;
+}
+.sideblog{
+    background:rgba(96, 96, 160,0.5);
+    border:3px solid blue;/*rgb(96,96,160)*/
+    padding:68px;
+    position:fixed;
+    top: 50%;
+    left: 2%;
+    margin-top: -15em; /*set to a negative number 1/2 of your height*/
+    margin-left: 25em; /*set to a negative number 1/2 of your width*/
+    border-radius:10px;
+    float:left;
+}
+.heading{
+text-transform:uppercase;
+color:white;
+font-weight:bold;
+font-size:20px;
+font-family:titlefont;
+}
+</style>
+{% if dets %}
+<script>
+alert('wrong details..');
+</script>
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="{% static 'css/stylelog.css' %}">
+<a class="titletag">E-assessment using image processing in ∞(Infinity) Exams</a>
+<div class="mainblog">
+<form method="post" action="{% url 'general:login' %}" autocomplete="off">
+{% csrf_token %}
+<table class="logintable" style="border:none;">
+<tr>
+    <td colspan="2" align="center"><img src="{% static 'images/teacher.png' %}"/></td>
+</tr>
+  <tr>
+     <td colspan="2" align="center"><p class="heading">Faculty Login</p></td>
+  </tr>
+  <tr>
+     <td colspan="2" align="center"><input type="text" name="username" class="userna" placeholder="username"></td>
+  </tr>
+  <tr>
+     <td colspan="2" align="center"><input type="password" name="password" class="passwo" placeholder="password"></td>
+  </tr>
+  <tr>
+     <td colspan="2" align="center"><input type="submit" value="submit" name="submit" class="subbtn" /></td>
+  </tr>
+  <tr height="200px;">
+     <td colspan="2" align="center"><a href="{% url 'general:registration' %}">Register Here</a></td>
+  </tr>
+</table>
+</form>
+</div>
+
+<div class="sideblog">
+<form method="post" action="{% url 'general:studentlogin' %}" autocomplete="off">
+{% csrf_token %}
+<table class="logintable1">
+<tr>
+<td colspan="2" align="center"><img src="{% static 'images/student1.png' %}"/></td>
+</tr>
+  <tr>
+     <td colspan="2" align="center"><p class="heading">Student Login</p></td>
+  </tr>
+  <tr>
+     <td colspan="2" align="center"><input type="text" name="username1" class="userna" placeholder="username"></td>
+  </tr>
+  <tr>
+     <td colspan="2" align="center"><input type="password" name="password1" class="passwo" placeholder="password"></td>
+  </tr>
+  <tr>
+     <td colspan="2" align="center"><input type="submit" value="submit" name="submit1" class="subbtn" /></td>
+  </tr>
+  <tr height="200px;">
+     <td colspan="2" align="center"><a href="{% url 'general:registration' %}" style="visibility:hidden;">Register Here</a></td>
+  </tr>
+</table>
+</form>
+</div>
+<img src="{% static 'images/exam.gif' %}" style="width:33%;position:absolute;right:50px;top:200px;">
+<img src="{% static 'images/architecture.png' %}" style="width:33%;position:absolute;right:50px;top:500px;">
+<div style="position:fixed;width:100%;bottom:50px;background:rgba(96, 96, 160,0.5);border-bottom:2px solid blue;border-top:2px solid blue;"><marquee behavior="alternate"><p style="color:white;font-size:20px;text-transform:uppercase;font-family:btmfont;">Python Django</p></marquee></div>
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+{% endblock %}

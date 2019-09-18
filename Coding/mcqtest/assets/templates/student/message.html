@@ -1,0 +1,32 @@
+{% extends 'student/base.html' %}
+{% block userbody %}
+<script>
+function changeFunc(valu) {
+alert(valu);
+   window.location.href="/student/Messages/"+valu;
+   }
+</script>
+<style>
+.messages{
+background:green;
+}
+.outerloc{
+position:absolute;
+top:10%;
+left:50%;
+}
+</style>
+<div class="outerloc">
+<select id="selectBox" onChange="changeFunc(this.value);">
+<option value="1">Please Select Teacher</option>
+{% for pr in prof %}
+<option value="{{pr.id}}">{{pr.username}}</option>
+{% endfor %}
+</select>
+<div class="messages">
+{% for msg in msgs %}
+{{msg.message}}
+{% endfor %}
+</div>
+</div>
+{% endblock %}

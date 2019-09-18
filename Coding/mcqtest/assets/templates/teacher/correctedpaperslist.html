@@ -1,0 +1,72 @@
+{% extends 'teacher/base.html' %}
+{% block userbody %}
+<style>
+.tableholder{
+height:80%;
+overflow:auto;
+position:absolute;
+left:25.5%;
+top:11%;
+padding:20px;
+}
+tr{
+height:100px;
+}
+table{
+background:rgba(255,255,255,0.5);
+width:600px;
+border-collapse:collapse;
+}
+td{
+width:70px;
+}
+th{
+color:white;
+background:green;
+}
+.tblhlr{
+position:absolute;
+left:27%;
+top:2%;
+}
+table tr td:first-child{
+border-left:1px solid green;
+}
+table tr td:last-child{
+border-right:1px solid green;
+}
+table tr:last-child{
+border-bottom:1px solid green;
+}
+table tr:hover{
+background:green;
+color:white;
+}
+</style>
+<table class="tblhlr">
+<tr>
+<th>Id</th>
+<th>Student</th>
+<th>Class</th>
+<th>Marks</th>
+<th>Answer Paper</th>
+</tr>
+</table>
+<div class="tableholder">
+<table>
+{% for d in data %}
+<tr>
+    <td><p>{{d.id}}</p></td>
+    <td><p>{{d.students.name}}</p></td>
+    <td><p>{{d.classes}}</p></td>
+    <td><p>{{d.marks}}</p></td>
+    {% with d.answerpapers.url|slice:"18:" as te %}
+    {% with "\media\answers"|add:te as templatess %}
+    <td><img src="{{templatess}}" style="margin-left:100px;width:100px;height:100px;"></td>
+    {% endwith %}
+    {% endwith %}
+{% endfor %}
+</tr>
+</table>
+</div>
+{% endblock %}

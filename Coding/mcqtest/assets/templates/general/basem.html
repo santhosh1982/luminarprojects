@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS3 MENU BUILD</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel='stylesheet prefetch' href='https://daneden.github.io/animate.css/animate.min.css'>
+  <link rel='stylesheet prefetch' href='https://daneden.github.io/animate.css/animate.min.css'>
+</head>
+
+<body style="background:url({% static 'images/2.jpg' %});">
+<ul>
+<li><a href="{% url 'general:logout' %}"><img src="{% static 'images/menuicon/home.png' %}"><div class="animated slideInLeft icn">Home</div></a></li>
+<li><a href="{% url 'general:logout' %}"><img src="{% static 'images/menuicon/user.png' %}"><div class="animated slideInLeft icn">User</div></a></li>
+<li><a href="{% url 'general:logout' %}"><img src="{% static 'images/menuicon/queries.png' %}"><div class="animated slideInLeft icn">Logout</div></a></li>
+<li><a href="{% url 'general:logout' %}"><img src="{% static 'images/menuicon/logout.png' %}"><div class="animated slideInLeft icn">Logout</div></a></li>
+</ul>
+  <div style="margin-top:-400px;margin-left:400px;">
+    {% block userbody %}
+    {% endblock %}
+    </div>
+
+</body>
+
+</html>

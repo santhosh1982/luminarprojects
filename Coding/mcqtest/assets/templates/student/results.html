@@ -1,0 +1,88 @@
+{% extends 'student/base.html' %}
+{% block userbody %}
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  table.tbldiv1{
+  margin-top:20px;
+  margin-left:70px;
+  }
+  table.tbldiv1 tr td{
+  width:100px;
+  height:50px;
+  font-size:20px;
+  color:blue;
+  }
+  table tr td{
+  text-align:center;
+  }
+  .tabledec{
+  padding:10px;
+  position:absolute;
+  top:15%;
+  left:15%;
+  border:3px solid white;
+  background:rgba(114,114,255,0.7);
+  width:40%;
+  height:60%;
+  }
+  table.tbldiv{
+  margin-left:-30px;
+  font-size:15px;
+  margin-top:50px;
+  }
+  </style>
+  <div class="tabledec">
+  <table class="tbldiv">
+{% for st in sid %}
+    <tr>
+        <td><p style="color:white;margin-left:100px;">{{st.subject}}</p></td>
+        <td><p style="color:white;margin-left:100px;">:</p></td>
+        <td><p style="color:white;margin-left:100px;">{{st.marks}}</p></td>
+        <td style="padding-left:10px;"><a data-toggle="modal" data-target="#myModal{{st.id}}" style="color:white;margin-top:-10px;">View Papers</a></td>
+
+ <div class="modal fade" id="myModal{{st.id}}" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+            {% with st.answerpapers.url|slice:"18:" as te %}
+            {% with "\media\answers"|add:te as templatess %}
+            <img src="\media\{{st.answerpapers}}" style="width:49%;">
+            <img src="{{templatess}}" style="width:49%;">
+            {% endwith %}
+            {% endwith %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+{% endfor %}
+</tr>
+</table>
+<table class="tbldiv1">
+<tr>
+<td>TOTAL</td>
+<td>:</td>
+<td>{{total}}</td>
+</tr>
+<tr>
+<td>AVERAGE</td>
+<td>:</td>
+<td>{{avgs}}</td>
+</tr>
+</table>
+</div>
+<img src="{% static 'images/result.jpg' %}" style="position:absolute;left:60%;top:60%;">
+<img src="{% static 'images/resultinfo.gif' %}" style="position:absolute;left:65%;top:15%;">
+{% endblock %}

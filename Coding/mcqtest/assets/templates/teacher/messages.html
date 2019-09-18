@@ -1,0 +1,179 @@
+{% extends 'teacher/base.html' %}
+{% block userbody %}
+{% load staticfiles %}
+<script>
+function changeFunc(valu) {
+   window.location.href="/teacher/Messages/"+valu;
+   }
+</script>
+<style>
+.outerloc{
+width:50%;
+ position:absolute;
+ top:10%;
+ left:30%;
+ border:1px solid red;
+}
+table{
+width:100%;
+background:red;
+}
+table tr td label{
+background:green;
+margin-right:50px;
+}
+.messag{
+background:red;
+padding:10px;
+}
+.message-bar{
+            width:82%;
+            height:90%;
+            float:left;
+                background:pink;
+            }
+            .message-pannel{
+                height:100%;
+                width:100%;
+                overflow:auto;
+                float:left;
+                background:rgb(236, 239, 241);
+            }
+            .contact-pannel{
+                height:100%;
+                width:100%;
+                overflow:auto;
+                float:left;
+                background:white;
+                border-right:2px solid #CFD2D3;
+            }
+            .chattbl{
+                width:100%;
+            }
+            .messages{
+                color:black;
+            }
+           
+            .msg{
+                padding:10px;
+            }
+             span
+            {
+                display: inline-block;
+                max-width: 80%;
+                background-color: white;
+                padding: 5px;
+                border-radius: 4px;
+                position: relative;
+                border-width: 1px;
+                border-style: solid;
+                border-color: grey;
+            }
+
+            left
+            {
+                float: left;
+            }
+
+            span.left:after
+            {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                left: -8.5px;
+                top: 7px;
+                height: 0px;
+                width: 0px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-right: 8px solid white;
+            }
+
+            span.left:before
+            {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                left: -9px;
+                top: 7px;
+                height: 0px;
+                width: 0px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-right: 8px solid black;
+            }
+
+            span.right:after
+            {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                right: -8px;
+                top: 6px;
+                height: 0px;
+                width: 0px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #dbedfe;
+            }
+
+            span.right:before
+            {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                right: -9px;
+                top: 6px;
+                height: 0px;
+                width: 0px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid black;
+            }
+
+            span.right
+            {
+                float: right;
+                background-color: #dbedfe;
+            }
+
+
+
+
+
+
+
+
+
+</style>
+<div class="outerloc">
+<select id="selectBox" onChange="changeFunc(this.value);">
+<option value="1">Please Select Student</option>
+{% for pr in prof %}
+<option value="{{pr.id}}">{{pr.name}}</option>
+{% endfor %}
+</select>
+asdfsafsdfsdfsd{{user}}
+<div class="message-bar">
+                    <div class="message-pannel">
+                       <table class="chattbl">
+                            {% for msg in msgs %}
+                              <tr>
+                                {% if msg.sender == 'teacher' %}
+                                    <td><div class="msg"><span class="right"><p class="messages">{{msg.message}}</p></span></div></td>
+                                {% else %}
+                                    <td><div class="msg"><span class="left"><p class="messages">{{msg.message}}</p></span></div></td>
+                                {% endif %}
+                            {% endfor %}
+                            </tr>
+                        </table>
+					                        
+                    </div>
+                </div>
+<form method="post">
+{% csrf_token %}
+{{msgfrm.message}}
+<input type="submit" name="submit" value="submit">
+</form>
+</div>
+{% endblock %}

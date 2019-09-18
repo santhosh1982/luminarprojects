@@ -1,0 +1,22 @@
+*{
+padding: 0px;
+margin: 0px;
+}
+.mainblog{
+    background:rgba(96, 96, 160,0.5);
+    border:3px solid blue;/*rgb(96,96,160)*/
+    float:left;
+    padding-top:60px;
+    padding-bottom:60px;
+    padding-left:60px;
+    padding-right:60px;
+    position:fixed;
+    top: 50%;
+    left: 25%;
+    margin-top: -15em; /*set to a negative number 1/2 of your height*/
+    margin-left: -20em; /*set to a negative number 1/2 of your width*/
+    border-radius:10px;
+}
+.logintable{
+    padding:10px;    
+}

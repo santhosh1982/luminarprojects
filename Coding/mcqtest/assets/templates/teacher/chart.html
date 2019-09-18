@@ -1,0 +1,39 @@
+{% extends 'teacher/base.html' %}
+{% block userbody %}
+
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	exportEnabled: true,
+	title:{
+		text: "Subject Wise Papers"
+	},
+	data: [{
+		type: "pyramid",
+		indexLabelFontSize: 18,
+		valueRepresents: "area",
+		showInLegend: true,
+		legendText: "{indexLabel}",
+		toolTipContent: "<b>{indexLabel}:</b> {y}%",
+		dataPoints: [
+        {% for s in subjects %}
+            { y: {{s.total}}, indexLabel: "{{s.subject}}" },
+        {% endfor %}
+			/*{ y: 30, indexLabel: "Research and Design" },
+			{ y: 30, indexLabel: "Manufacturing" },
+			{ y: 15, indexLabel: "Marketing" },
+			{ y: 13, indexLabel: "Shipping" },
+			{ y: 12, indexLabel: "Retail" }*/
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+<a href="{% url 'teacher:chart1' %}" style="position:absolute;text-transform:uppercase;border:1px solid red;top:5%;left:45%;order:1px solid red;padding:10px;background:red;color:white;">Class wise Chart</a>
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin-top:150px;margin-left:250px;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+{% endblock %}

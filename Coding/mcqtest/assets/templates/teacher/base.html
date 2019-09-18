@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>E-assessment using image processing in ∞Exams</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel='stylesheet prefetch' href='https://daneden.github.io/animate.css/animate.min.css'>
+  <link rel='stylesheet prefetch' href='https://daneden.github.io/animate.css/animate.min.css'>
+</head>
+
+<body style="background:url({% static 'images/2.jpg' %});">
+<ul>
+<li><a href="{% url 'teacher:home' %}"><img src="{% static 'images/menuicon/home.png' %}"><div class="animated slideInLeft icn">Home</div></a></li>
+<li><a href="{% url 'teacher:uploadanswers' %}"><img src="{% static 'images/menuicon/upload.png' %}"><div class="animated slideInLeft icn">Upload Answers</div></a></li>
+<li><a href="{% url 'teacher:correctedpapersList' %}"><img src="{% static 'images/menuicon/correct.png' %}"><div class="animated slideInLeft icn">Corrected Paper</div></a></li>
+<li><a href="{% url 'teacher:viewstudentslist' %}"><img src="{% static 'images/menuicon/viewuser.png' %}"><div class="animated slideInLeft icn">View Student List</div></a></li>
+<li><a href="{% url 'teacher:uploadStudentDetials' %}"><img src="{% static 'images/menuicon/uploaduser.png' %}"><div class="animated slideInLeft icn">Upload Student List</div></a></li>
+<li><a href="{% url 'teacher:chart' %}"><img src="{% static 'images/menuicon/chart.png' %}"><div class="animated slideInLeft icn">Chart</div></a></li>
+<li><a href="{% url 'general:logout' %}"><img src="{% static 'images/menuicon/logout.png' %}"><div class="animated slideInLeft icn">Logout</div></a></li>
+</ul>
+    {% block userbody %}
+    {% endblock %}
+
+</body>
+
+</html>

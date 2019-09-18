@@ -1,0 +1,39 @@
+Hello, 
+
+Today's topic is "E-assessment using image processing in 8Exams"
+
+
+There are two users in this system they are 
+	> Faculty
+	>Students
+
+Students have no persmission to register because thier details can be uploaded by faculties so that they can login with thier user name and given userid
+
+    *  Faculty Register and login
+
+    *  Here we show the graph analysis of the values which taken from the project.
+
+    *  In student side there some graphs that are related to their marks analysis. To do this graph analsis follow the execution.
+
+    *  Faculty will upload the student details from csv file (the prepared dataset)
+
+    *  From this data students can login into their accounts
+
+    *  Now faculty uploads the assessment paper with required detais to cloud and for evaluting the paper 
+
+   *  Once paper uploaded the given paper evaluated and stored
+
+   *  Now student login and view the answer with thier corrected papers and assessment details
+
+   *  Here we shown the corrected paper and uploaded original paper
+
+   *  Now the analsysis details were shown in the representation of graph.
+
+Additional Details:
+   *  If students wants thier details to update they can update. Students are free to update but they cant change thier student id column
+   
+
+
+
+
+THANK YOU :)

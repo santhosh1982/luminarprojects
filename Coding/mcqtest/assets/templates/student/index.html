@@ -1,0 +1,54 @@
+{% extends 'student/base.html' %}
+{% block userbody %}
+{% load staticfiles %}
+<style>
+.sttabl{
+height:800px;
+margin-left:200px;
+margin-top:20px;
+margin-bottom:20px;
+color:white;
+float:left;
+padding:10px;
+overflow:auto;
+background:rgba(255,255,255,0.5);
+}
+table{
+width:600px;
+overflow:auto;
+text-align:center;
+border-collapse:collapse;
+border:1px solid green;
+}
+table tr th{
+padding:10px;
+background:green;
+}
+table tr:hover{
+background:rgba(30,102,30,0.8);
+}
+</style>
+<div class="sttabl">
+<table>
+<tr>
+<th>Id</th>
+<th>Student</th>
+<th>Class</th>
+<th>Answer Paper</th>
+</tr>
+{% for d in data %}
+<tr>
+    <td><p>{{d.id}}</p></td>
+    <td><p>{{d.students.name}}</p></td>
+    <td><p>{{d.students.classes}}</p></td>
+    {% with d.answerpapers.url|slice:"18:" as te %}
+    {% with "\media\answers"|add:te as templatess %}
+    <td><img src="{{templatess}}" style="margin-left:100px;width:100px;height:100px;"></td>
+    {% endwith %}
+    {% endwith %}
+{% endfor %}
+</tr>
+</table>
+</div>
+<img src="{% static 'images/assesssment.jpg' %}" style="margin-top:10px;width:30%;margin-left:10px;margin-top:100px;">
+{% endblock %}

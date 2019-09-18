@@ -1,0 +1,138 @@
+{% extends 'general/base.html' %}
+{% block loginbody %}
+{% load staticfiles %}
+
+<style>
+.regfor{
+background:rgba(96, 96, 160,0.5);
+padding:15px;
+position:absolute;
+bottom:19%;
+border:1px solid blue;
+border-radius:5%;
+left:38%;
+width:24%;
+}
+table tr {
+height:50px;
+}
+table{
+width: 100%;
+}
+.common{
+background:none;
+border:1px solid white;
+text-align:center;
+width:100%;
+border-radius:2px;
+}
+input{
+height:30px;
+background:none;
+border:1px solid white;
+text-align:center;
+width:100%;
+border-radius:2px;
+}
+input[type=submit]{
+width:100px;
+background:none;
+border:1px solid white;
+color:white;
+text-transform:uppercase;
+border-radius:5px;
+}
+input[type=submit]:hover{
+background:white;
+color:rgb(94, 142, 137);
+font-weight: bold;
+}
+::placeholder{
+color:white;
+}
+table.usrtbl{
+margin-top:26%;
+}
+@font-face {
+    font-family: titlefont;
+    src: url({% static 'fonts/AppleTree.ttf' %});
+}
+.titletag{
+text-transform:uppercase;
+font-size:35px;
+color:white;
+position:absolute;
+left:15%;
+top:3%;
+padding:20px;
+font-family:titlefont;
+background:rgba(96, 96, 160,0.5);
+border-size:1px;
+border-style:solid;
+border-color:white;
+border-radius:7px 7px 7px 7px;
+}
+.bottoms{
+position:absolute;
+bottom:1px;
+width:99%;
+background:rgba(96, 96, 160,0.5);
+border-bottom:1px solid blue;
+border-top:1px solid blue;
+}
+</style>
+<script>
+window.onload = function() {
+    var src = document.getElementById("id_password1"),
+        dst = document.getElementById("id_password2");
+    src.addEventListener('input', function() {
+        dst.value = src.value;
+    });
+};
+
+</script>
+<img src="{% static 'images/architecture.png' %}" style="width:35%;position:absolute;top:20%;left:1%;border-radius:20px;">
+<img src="{% static 'images/architecture1.png' %}" style="width:35%;position:absolute;bottom:20%;left:1%;border-radius:20px;">
+<a class="titletag">E-assessment using image processing in ∞(Infinity) Exams</a>
+<div class="regfor">
+<img src="{% static 'images/adduser.png' %}" style="position:absolute;top:-22%;left:33%;">
+<form method="post" autocomplete="off">
+{% csrf_token %}
+<table class="urtbl" style="overflow:auto;">
+<tr>
+<td>{{form.first_name}}</td>
+</tr>
+<tr>
+<td>{{form.last_name}}</td>
+</tr>
+<tr>
+<td>{{form.username}}</td>
+</tr>
+<tr>
+<td>{{form.password}}</td>
+</tr>
+<tr>
+<td>{{form.password1}}</td>
+</tr>
+<tr style="visibility:collapse;">
+<td>{{form.password2}}</td>
+</tr>
+<tr>
+<td>{{form.email}}</td>
+</tr>
+<tr>
+<td>{{form.birth_date}}</td>
+</tr>
+<tr>
+<td>{{form.location}}</td>
+</tr>
+<tr>
+<td align="center"><input type="submit" value="submit" /></td>
+</tr>
+</table>
+</form>
+</div>
+<img src="{% static 'images/architecture2.png' %}" style="position:absolute;right:5%;top:25%;height:60%;border-radius:20px;">
+<div class="bottoms"><marquee behavior="alternate"><p style="color:white;font-size:20px;text-transform:uppercase">E-assessment using image processing in ∞(Infinity) Exams</p></marquee></div>
+<td><p>{{form.errors}}</p></td>
+{% endblock %}
